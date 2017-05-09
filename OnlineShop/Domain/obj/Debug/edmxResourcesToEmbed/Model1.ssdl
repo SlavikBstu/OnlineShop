@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище OnlineShopModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="address">
+    <Key>
+      <PropertyRef Name="Address_id" />
+    </Key>
+    <Property Name="Address_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="User_id" Type="int" Nullable="false" />
+    <Property Name="Country" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Region" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="City" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Number_of_house" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="Number_of_flat" Type="int" Nullable="false" />
+    <Property Name="Email_index" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="Category_id" />
+    </Key>
+    <Property Name="Category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Category_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="product_info">
+    <Key>
+      <PropertyRef Name="Info_id" />
+    </Key>
+    <Property Name="Info_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Product_id" Type="int" Nullable="false" />
+    <Property Name="Creator_company" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Release_date" Type="date" Nullable="false" />
+    <Property Name="Annotation" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="Product_id" />
+    </Key>
+    <Property Name="Product_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Category_id" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="int" Nullable="false" />
+    <Property Name="Price" Type="money" Nullable="false" />
+    <Property Name="Stock" Type="int" Nullable="false" />
+    <Property Name="Picture" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Add_date" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="User_id" />
+    </Key>
+    <Property Name="User_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Birthday" Type="date" Nullable="false" />
+    <Property Name="Sex" Type="nchar" MaxLength="1" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="15" />
+    <Property Name="Avatar" Type="nvarchar" MaxLength="100" />
+    <Property Name="Register_date" Type="date" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__address__User_id__239E4DCF">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="address" Type="Self.address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="address">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product_i__Produ__5CD6CB2B">
+    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="product_info" Type="Self.product_info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="Product_id" />
+      </Principal>
+      <Dependent Role="product_info">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__products__Catego__49C3F6B7">
+    <End Role="category" Type="Self.category" Multiplicity="1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="Category_id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="Category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище OnlineShopModelContainer">
+    <EntitySet Name="address" EntityType="Self.address" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product_info" EntityType="Self.product_info" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="products" EntityType="Self.products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__address__User_id__239E4DCF" Association="Self.FK__address__User_id__239E4DCF">
+      <End Role="users" EntitySet="users" />
+      <End Role="address" EntitySet="address" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product_i__Produ__5CD6CB2B" Association="Self.FK__product_i__Produ__5CD6CB2B">
+      <End Role="products" EntitySet="products" />
+      <End Role="product_info" EntitySet="product_info" />
+    </AssociationSet>
+    <AssociationSet Name="FK__products__Catego__49C3F6B7" Association="Self.FK__products__Catego__49C3F6B7">
+      <End Role="category" EntitySet="category" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

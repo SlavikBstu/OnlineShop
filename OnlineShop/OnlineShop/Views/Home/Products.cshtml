@@ -1,0 +1,69 @@
+﻿@model OnlineShop.Models.Product
+
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+<!--
+<link rel="stylesheet" href="Url.Content("~/context/css/product.css")" />
+<div class="block" style="border: 1px solid;" id="categories_block_left">
+    <h3 class="title_block">Categories</h3>
+    <div class="block_content">
+        <ul class="tree dynamized" style="display: block;">
+            <li>
+                <a title="" href="#">Экшены/шутеры</a>
+            </li>
+            <li>
+                <a title="" href="#">Стратегии</a>
+
+            </li>
+            <li>
+                <a title="" href="#">Приключения</a>
+            </li>
+            <li>
+                <a title="" href="#">Гонки</a>
+            </li>
+            <li class="last">
+                <a title="" href="#">Симуляторы</a>
+            </li>
+        </ul>
+    </div>
+    <h3 class="title_block">Выбрать</h3>
+    <div class="filterby">
+        <ul class="tree dynamized" style="display: block;">
+            <li>
+                <label for="ekshn">Экшены/шутер</label>
+                <input id="ekshn" type="checkbox" />
+            </li>
+            <li>
+                <label for="strategy">Стратегии</label>
+                <input id="strategy" type="checkbox" />
+            </li>
+            <li>
+                <label for="prikl">Приключения</label>
+                <input id="prikl" type="checkbox" />
+            </li>
+            <li>
+                <label for="race">Гонки</label>
+                <input id="race" type="checkbox" />
+            </li>
+            <li class="last">
+                <label for="sim">Симуляторы</label>
+                <input id="sim" type="checkbox" />
+            </li>
+        </ul>
+    </div>
+</div>-->
+@using (Html.BeginForm("Products", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <p>Название игры: @Html.TextBoxFor(x => x.Title)</p>
+    <p>Категория: @Html.TextBoxFor(x => x.Category_id)</p>
+    <p>Количество продукта: @Html.TextBoxFor(x => x.Amount)</p>
+    <p>Цена: @Html.TextBoxFor(x => x.Price)</p>
+    <p>Скидка: @Html.TextBoxFor(x => x.Stock)</p>
+    <input type="file" name="upload" /><br />
+
+    <input type="submit" value="Добавить" />
+}
+

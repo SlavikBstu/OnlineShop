@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <link rel="stylesheet" href="@Url.Content("~/context/lib/bootstrap/css/bootstrap.min.css")"/>
+
+    <link rel="stylesheet" href="@Url.Content("~/context/css/bootstrap.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/context/css/global.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/context/css/reset.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/context/css/grid.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/context/css/menu.css")" />
+
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        <!--Header-->
+        <header>
+            <div class="navbar navbar-static  cbp-af-header">
+                <div class="cbp-af-inner ">
+                    <div class="navbar-inner container_9 ">
+                        <span class="nav pull-left"> <a title="Shop Master" href="home.html" class="logo "><img alt="logo" src="@Url.Content("~/context/img/logo.png")"></a> </span>
+                        <ul id="header_nav" class="nav pull-right">
+                            <li><i class="icon-user"></i> <a href="#">My Account</a></li>
+                            <li><i class="icon-heart"></i> <a href="#" #">Wishlist </a></li>
+                            <li><i class="icon-circle-arrow-right"></i> <a href="Checkout.сcshtml">Checkout </a></li>
+                            <li>
+                                <button class="dropdown-icon dropdown-icon-search dropdown-toggle"><i class="icon-search"></i></button>
+                                <ul class="dropdown-menu2">
+                                    <li>
+                                        <form id="searchbox" action="#" method="get">
+                                            <input type="text" name="search_query" value="" placeholder="Search here..">
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button class="dropdown-icon dropdown-toggle" data-toggle="dropdown"><i class="icon-shopping-cart "></i> </button>
+                                <div class="shop-cart-info"> 0 item(s) - $0.00 </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--Menu-->
+                <div id="menu">
+                    <ul id="nav">
+                        <li>@Html.ActionLink("Домашняяя", "Index", "Home")</li>
+                        <li>
+                            <a href="#">Игры</a>
+                            <ul>
+                                <li><a href="#">Каталог игр</a></li>
+                                <li><a href="#">Мои игры</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Корзина</a></li>
+                        <li>@Html.ActionLink("О нас", "About", "Home")</li>
+                        <li>@Html.ActionLink("Контакты", "Contacts", "Home")</li>
+                    </ul>
+                </div>
+                <!--Menu end-->
+            </div>
+        </header>
+        <!--Header end-->
+        
+        @RenderBody()
+        <!--Footer -->
+        <footer id="footer">
+            <div class="footer-wrap container_9 ">
+                <a href="#" class="backtotop"><img src="@Url.Content("~/context/img/backtotop.png")" alt="top" title="top"></a>
+                <div class="footer-set">
+                    <div class="block"> </div>
+                    <div class="block">
+                        <h4>My account</h4>
+                        <div class="block_content">
+                            <ul>
+                                <li><a href="indexc027.html?controller=history">My orders</a></li>
+                                <li><a href="indexe29a.html?controller=order-slip">My credit slips</a></li>
+                                <li><a href="index721b.html?controller=addresses">My addresses</a></li>
+                                <li><a href="index5d6a.html?controller=identity">My personal info</a></li>
+                            </ul>
+                        </div>
+                    </div>    <div class="block">
+                        <h4>Info</h4>
+                        <div class="block_content">
+                            <ul>
+                                <li class="item"><a title="Delivery" href="indexab5b.html?id_cms=1&amp;controller=cms&amp;id_lang=1">Delivery</a></li>
+                                <li class="item"><a title="Legal Notice" href="index0913.html?id_cms=2&amp;controller=cms&amp;id_lang=1">Legal Notice</a></li>
+                                <li class="item"><a title="About us" href="About_us.aspx">About us</a></li>
+                                <li><a title="Sitemap" href="indexcc05.html?controller=sitemap">Sitemap</a></li>
+                            </ul>
+                        </div>
+                    </div>    <div class="block last">
+                        <h4>Find us</h4>
+                        <div class="block_content">
+                            Shop name <br />
+                            Country <br />
+                            City <br />
+                            Address <br />
+                            Tel: <br />
+                            e-mail:<a href="#">.....mail.ru</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--Footer end-->
+    </div>
+</body>
+</html>

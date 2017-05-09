@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewBag.Title = "Authorisation";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+<link rel="stylesheet" href="@Url.Content("~/Context/css/aut.css")" />
+
+    <h1>Войдите в ваш личный кабинет</h1>
+    <fieldset id="inputs">
+        <input id="username" type="text" placeholder="Логин" autofocus required><br />
+        <input id="password" type="password" placeholder="Пароль" required>
+    </fieldset>
+    <fieldset id="actions">
+        <input type="submit" id="submit" value="ВОЙТИ">
+        <a href="">Забыли пароль?</a><a href="">Регистрация</a>
+    </fieldset>
+

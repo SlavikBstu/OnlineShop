@@ -1,0 +1,14 @@
+﻿@model OnlineShop.Models.Authorization
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <p>Ваш E-mail: @Html.TextBoxFor(x => x.Email)</p>
+    <p>Ваш пароль: @Html.TextBoxFor(x => x.Password)</p>
+
+    <input type="submit" value="Отправить" />
+}

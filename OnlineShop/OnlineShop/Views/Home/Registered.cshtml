@@ -1,0 +1,22 @@
+﻿@model OnlineShop.Models.Register
+
+@{
+    ViewBag.Title = "Registered";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <p>Ваша фамилия: @Html.TextBoxFor(x => x.Name)</p>
+    <p>Ваше имя: @Html.TextBoxFor(x => x.Surname)</p>
+    <p>Ваше пол: @Html.DropDownListFor(x => x.Sex, new[] {
+                new SelectListItem() { Text = "мужской", Value = "м"},
+                new SelectListItem() { Text = "женский", Value = "ж"}
+            })</p>
+    <p>Дата рождения: @Html.TextBoxFor(x => x.Birthday)</p>
+    <p>Ваш телефон: @Html.TextBoxFor(x => x.Phone)</p>
+    <p>Ваш E-mail: @Html.TextBoxFor(x => x.Email)</p>
+    <p>Ваш пароль: @Html.TextBoxFor(x => x.Password)</p>
+
+    <input type="submit" value="Зарегистрироваться" />
+}

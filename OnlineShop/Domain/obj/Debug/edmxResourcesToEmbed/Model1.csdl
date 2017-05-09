@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OnlineShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="address">
+    <Key>
+      <PropertyRef Name="Address_id" />
+    </Key>
+    <Property Name="Address_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_id" Type="Int32" Nullable="false" />
+    <Property Name="Country" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Region" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="City" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Number_of_house" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Number_of_flat" Type="Int32" Nullable="false" />
+    <Property Name="Email_index" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="users" Relationship="Self.FK__address__User_id__239E4DCF" FromRole="address" ToRole="users" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="Category_id" />
+    </Key>
+    <Property Name="Category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="products" Relationship="Self.FK__products__Catego__49C3F6B7" FromRole="category" ToRole="products" />
+  </EntityType>
+  <EntityType Name="product_info">
+    <Key>
+      <PropertyRef Name="Info_id" />
+    </Key>
+    <Property Name="Info_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product_id" Type="Int32" Nullable="false" />
+    <Property Name="Creator_company" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Release_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Annotation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="products" Relationship="Self.FK__product_i__Produ__5CD6CB2B" FromRole="product_info" ToRole="products" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="Product_id" />
+    </Key>
+    <Property Name="Product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Category_id" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Stock" Type="Int32" Nullable="false" />
+    <Property Name="Picture" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Add_date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="category" Relationship="Self.FK__products__Catego__49C3F6B7" FromRole="products" ToRole="category" />
+    <NavigationProperty Name="product_info" Relationship="Self.FK__product_i__Produ__5CD6CB2B" FromRole="products" ToRole="product_info" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="User_id" />
+    </Key>
+    <Property Name="User_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Sex" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Avatar" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Register_date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="address" Relationship="Self.FK__address__User_id__239E4DCF" FromRole="users" ToRole="address" />
+  </EntityType>
+  <Association Name="FK__address__User_id__239E4DCF">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="address" Type="Self.address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="address">
+        <PropertyRef Name="User_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__products__Catego__49C3F6B7">
+    <End Role="category" Type="Self.category" Multiplicity="1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="Category_id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="Category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product_i__Produ__5CD6CB2B">
+    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="product_info" Type="Self.product_info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="Product_id" />
+      </Principal>
+      <Dependent Role="product_info">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OnlineShopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="address" EntityType="Self.address" />
+    <EntitySet Name="category" EntityType="Self.category" />
+    <EntitySet Name="product_info" EntityType="Self.product_info" />
+    <EntitySet Name="products" EntityType="Self.products" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="users" EntityType="Self.users" />
+    <AssociationSet Name="FK__address__User_id__239E4DCF" Association="Self.FK__address__User_id__239E4DCF">
+      <End Role="users" EntitySet="users" />
+      <End Role="address" EntitySet="address" />
+    </AssociationSet>
+    <AssociationSet Name="FK__products__Catego__49C3F6B7" Association="Self.FK__products__Catego__49C3F6B7">
+      <End Role="category" EntitySet="category" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product_i__Produ__5CD6CB2B" Association="Self.FK__product_i__Produ__5CD6CB2B">
+      <End Role="products" EntitySet="products" />
+      <End Role="product_info" EntitySet="product_info" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
