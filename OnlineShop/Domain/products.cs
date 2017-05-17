@@ -17,6 +17,8 @@ namespace Domain
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public products()
         {
+            this.basket = new HashSet<basket>();
+            this.orders = new HashSet<orders>();
             this.product_info = new HashSet<product_info>();
         }
     
@@ -25,11 +27,14 @@ namespace Domain
         public int Category_id { get; set; }
         public int Amount { get; set; }
         public decimal Price { get; set; }
-        public int Stock { get; set; }
         public string Picture { get; set; }
         public System.DateTime Add_date { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<basket> basket { get; set; }
         public virtual category category { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<orders> orders { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<product_info> product_info { get; set; }
     }

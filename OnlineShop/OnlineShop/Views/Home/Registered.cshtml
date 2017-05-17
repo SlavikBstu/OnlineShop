@@ -4,19 +4,30 @@
     ViewBag.Title = "Registered";
     Layout = "~/Views/Shared/_Master.cshtml";
 }
+<link rel="stylesheet" href="@Url.Content("~/context/css/register.css")" />
 
-@using (Html.BeginForm())
+
+@using (Html.BeginForm("Registered", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <p>Ваша фамилия: @Html.TextBoxFor(x => x.Name)</p>
-    <p>Ваше имя: @Html.TextBoxFor(x => x.Surname)</p>
-    <p>Ваше пол: @Html.DropDownListFor(x => x.Sex, new[] {
+    <div class="reg">
+            <h2>Ваша фамилия: </h2>@Html.TextBoxFor(x => x.Surname)
+            @Html.ValidationMessageFor(x => x.Surname)<br />
+            <h2>Ваше имя:</h2> @Html.TextBoxFor(x => x.Name)
+            @Html.ValidationMessageFor(x => x.Name)<br />
+            <h2>Ваше пол:</h2> @Html.DropDownListFor(x => x.Sex, new[] {
                 new SelectListItem() { Text = "мужской", Value = "м"},
                 new SelectListItem() { Text = "женский", Value = "ж"}
-            })</p>
-    <p>Дата рождения: @Html.TextBoxFor(x => x.Birthday)</p>
-    <p>Ваш телефон: @Html.TextBoxFor(x => x.Phone)</p>
-    <p>Ваш E-mail: @Html.TextBoxFor(x => x.Email)</p>
-    <p>Ваш пароль: @Html.TextBoxFor(x => x.Password)</p>
-
-    <input type="submit" value="Зарегистрироваться" />
+            })<br />
+            <h2>Дата рождения:</h2> @Html.TextBoxFor(x => x.Birthday)
+            @Html.ValidationMessageFor(x => x.Birthday)<br />
+            <h2>Ваш телефон:</h2> @Html.TextBoxFor(x => x.Phone)
+            @Html.ValidationMessageFor(x => x.Phone)<br />
+            <h2>Ваш E-mail:</h2> @Html.TextBoxFor(x => x.Email)
+            @Html.ValidationMessageFor(x => x.Email)<br />
+            <input type="file" name="upload" /><br />
+            <h2>Ваш пароль:</h2> @Html.TextBoxFor(x => x.Password)
+            @Html.ValidationMessageFor(x => x.Password)<br />
+        <p class="submit"><input type="submit" value="Зарегистрироваться" /></p>
+    </div>
 }
+    

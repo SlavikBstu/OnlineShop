@@ -21,13 +21,11 @@
             <div class="navbar navbar-static  cbp-af-header">
                 <div class="cbp-af-inner ">
                     <div class="navbar-inner container_9 ">
-                        <span class="nav pull-left"> <a title="Shop Master" href="home.html" class="logo "><img alt="logo" src="@Url.Content("~/context/img/logo.png")"></a> </span>
+                        <span class="nav pull-left"> <a title="Shop Master" href="home.html" class="logo "><img alt="logo" id="logot" src="@Url.Content("~/context/img/logo.png")"></a> </span>
                         <ul id="header_nav" class="nav pull-right">
-                            <li><i class="icon-user"></i> <a href="#">My Account</a></li>
-                            <li><i class="icon-heart"></i> <a href="#" #">Wishlist </a></li>
-                            <li><i class="icon-circle-arrow-right"></i> <a href="Checkout.сcshtml">Checkout </a></li>
+                            <li><i class="icon-user"></i> @Html.ActionLink("Мой кабинет", "Profile", "Home")</li>
+                            <li><i class="icon-circle-arrow-right"></i> <a href="Checkout.сcshtml">Выйти </a></li>
                             <li>
-                                <button class="dropdown-icon dropdown-icon-search dropdown-toggle"><i class="icon-search"></i></button>
                                 <ul class="dropdown-menu2">
                                     <li>
                                         <form id="searchbox" action="#" method="get">
@@ -47,23 +45,14 @@
                 <div id="menu">
                     <ul id="nav">
                         <li>@Html.ActionLink("Домашняяя", "Index", "Home")</li>
-                        <li>
-                            <a href="#">Игры</a>
-                            <ul>
-                                <li><a href="#">Каталог игр</a></li>
-                                <li><a href="#">Мои игры</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Корзина</a></li>
-                        <li>@Html.ActionLink("О нас", "About", "Home")</li>
-                        <li>@Html.ActionLink("Контакты", "Contacts", "Home")</li>
+                        <li>@Html.ActionLink("Каталог игр", "Product", "Home")</li>
                     </ul>
                 </div>
                 <!--Menu end-->
             </div>
         </header>
         <!--Header end-->
-        
+
         @RenderBody()
         <!--Footer -->
         <footer id="footer">

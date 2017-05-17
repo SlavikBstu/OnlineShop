@@ -17,7 +17,8 @@ namespace Domain
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public users()
         {
-            this.address = new HashSet<address>();
+            this.basket = new HashSet<basket>();
+            this.orders = new HashSet<orders>();
         }
     
         public int User_id { get; set; }
@@ -28,10 +29,13 @@ namespace Domain
         public string Email { get; set; }
         public string Password { get; set; }
         public string Phone { get; set; }
+        public string Address { get; set; }
         public string Avatar { get; set; }
         public System.DateTime Register_date { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<address> address { get; set; }
+        public virtual ICollection<basket> basket { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<orders> orders { get; set; }
     }
 }

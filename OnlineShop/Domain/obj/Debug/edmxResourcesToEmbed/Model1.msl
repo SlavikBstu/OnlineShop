@@ -1,17 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="Хранилище OnlineShopModelContainer" CdmEntityContainer="OnlineShopEntities">
-    <EntitySetMapping Name="address">
-      <EntityTypeMapping TypeName="OnlineShopModel.address">
-        <MappingFragment StoreEntitySet="address">
-          <ScalarProperty Name="Address_id" ColumnName="Address_id" />
-          <ScalarProperty Name="User_id" ColumnName="User_id" />
-          <ScalarProperty Name="Country" ColumnName="Country" />
-          <ScalarProperty Name="Region" ColumnName="Region" />
-          <ScalarProperty Name="City" ColumnName="City" />
-          <ScalarProperty Name="Number_of_house" ColumnName="Number_of_house" />
-          <ScalarProperty Name="Number_of_flat" ColumnName="Number_of_flat" />
-          <ScalarProperty Name="Email_index" ColumnName="Email_index" />
+    <EntitySetMapping Name="basket">
+      <EntityTypeMapping TypeName="OnlineShopModel.basket">
+        <MappingFragment StoreEntitySet="basket">
+          <ScalarProperty Name="Basket_id" ColumnName="Basket_id" />
+          <ScalarProperty Name="Client_id" ColumnName="Client_id" />
+          <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+          <ScalarProperty Name="Add_date" ColumnName="Add_date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -20,6 +16,16 @@
         <MappingFragment StoreEntitySet="category">
           <ScalarProperty Name="Category_id" ColumnName="Category_id" />
           <ScalarProperty Name="Category_name" ColumnName="Category_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="OnlineShopModel.orders">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="Order_id" ColumnName="Order_id" />
+          <ScalarProperty Name="Client_id" ColumnName="Client_id" />
+          <ScalarProperty Name="Product_id" ColumnName="Product_id" />
+          <ScalarProperty Name="Add_date" ColumnName="Add_date" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -42,7 +48,6 @@
           <ScalarProperty Name="Category_id" ColumnName="Category_id" />
           <ScalarProperty Name="Amount" ColumnName="Amount" />
           <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Stock" ColumnName="Stock" />
           <ScalarProperty Name="Picture" ColumnName="Picture" />
           <ScalarProperty Name="Add_date" ColumnName="Add_date" />
         </MappingFragment>
@@ -70,6 +75,7 @@
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Avatar" ColumnName="Avatar" />
           <ScalarProperty Name="Register_date" ColumnName="Register_date" />
         </MappingFragment>

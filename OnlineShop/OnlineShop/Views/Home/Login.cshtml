@@ -4,11 +4,14 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Master.cshtml";
 }
+<link rel="stylesheet" href="@Url.Content("~/context/css/register.css")" />
 
 @using (Html.BeginForm())
 {
-    <p>Ваш E-mail: @Html.TextBoxFor(x => x.Email)</p>
-    <p>Ваш пароль: @Html.TextBoxFor(x => x.Password)</p>
+    <div class="log">
+        <h2>Ваш E-mail:</h2> @Html.TextBoxFor(x => x.Email)
+        <h2>Ваш пароль:</h2> @Html.TextBoxFor(x => x.Password)
 
-    <input type="submit" value="Отправить" />
+        <p class="submit"><input type="submit" value="Отправить" /></p>
+    </div>
 }

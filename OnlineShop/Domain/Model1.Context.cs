@@ -25,8 +25,9 @@ namespace Domain
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<address> address { get; set; }
+        public virtual DbSet<basket> basket { get; set; }
         public virtual DbSet<category> category { get; set; }
+        public virtual DbSet<orders> orders { get; set; }
         public virtual DbSet<product_info> product_info { get; set; }
         public virtual DbSet<products> products { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }

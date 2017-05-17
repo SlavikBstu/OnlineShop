@@ -142,19 +142,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Context\css\basket.css" />
+    <Content Include="Context\css\register.css" />
     <Content Include="Context\css\bootstrap.css" />
     <Content Include="Context\css\contacts.css" />
     <Content Include="Context\css\aut.css" />
     <Content Include="Context\css\global.css" />
     <Content Include="Context\css\grid.css" />
     <Content Include="Context\css\menu.css" />
-    <Content Include="Context\css\product.css" />
     <Content Include="Context\css\reset.css" />
     <Content Include="Context\img\about.png" />
+    <Content Include="Context\img\addcard-index.png" />
+    <Content Include="Context\img\asus.jpg" />
     <Content Include="Context\img\backtotop.png" />
     <Content Include="Context\img\bg.png" />
+    <Content Include="Context\img\buy.png" />
+    <Content Include="Context\img\delete.png" />
     <Content Include="Context\img\logo.png" />
+    <Content Include="Context\img\podbor.jpg" />
     <Content Include="Context\lib\bootstrap\css\bootstrap-responsive.css" />
     <Content Include="Context\lib\bootstrap\css\bootstrap-responsive.min.css" />
     <Content Include="Context\lib\bootstrap\css\bootstrap.css" />
@@ -173,6 +177,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Address.cs" />
     <Compile Include="Models\Authorization.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Register.cs" />
@@ -187,7 +192,6 @@
     <Content Include="Views\Shared\_Master.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Basket.cshtml" />
     <Content Include="Views\Home\Contacts.cshtml" />
     <Content Include="Views\Home\Authorisation.cshtml" />
     <Content Include="Views\Home\Registered.cshtml" />
@@ -197,6 +201,8 @@
     <Content Include="Views\Home\Products.cshtml" />
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Home\ProductsEdit.cshtml" />
+    <Content Include="Views\Home\Product.cshtml" />
+    <Content Include="Views\Home\Address.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -206,7 +212,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Img\" />
+    <Folder Include="ImgAvatars\" />
+    <Folder Include="ImgProduct\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">

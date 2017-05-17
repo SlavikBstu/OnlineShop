@@ -6,16 +6,18 @@ CREATE TABLE [users](
 	[Surname] [nvarchar](25) NOT NULL,
 	[Birthday] [date] NOT NULL,
 	[Sex] [nchar](1) check(Sex in ('ì','æ')) NOT NULL,
-	[Email] [nvarchar](25) NOT NULL,
+	[Email] [nvarchar](80) NOT NULL,
 	[Password] [nvarchar](100) NOT NULL,
 	[Phone] [nvarchar](15),
-	[Avatar] [nvarchar](100) ,
+	[Address] [nvarchar](150) NOT NULL,
+	[Avatar] [nvarchar](100) default ('~/ImgAvatars/default.png'),
 	[Register_date] [date] default getdate() NOT NULL,
 )
 
-select * from clients
 
-delete from clients
+select * from users
 
-insert into clients(Name, Surname, Birthday, Sex, Email, Password, Phone, Avatar)
-values ('Name1', 'Surname1', '12-12-2012', 'æ', 'Email1', 'Password1', 'Phone1', 'Avatar1')
+delete from users
+
+insert into users(Name, Surname, Birthday, Sex, Email, Password, Phone, Address)
+values ('Name1', 'Surname1', '12-12-2012', 'æ', 'Email1', 'Password1', 'Phone1', 'Address1')

@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "ProductsEdit";
-    Layout = "~/Views/Shared/_Master.cshtml";
+   
 }
 
 @using (Html.BeginForm("Products", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -11,7 +11,7 @@
     <p>Категория: @Html.TextBoxFor(x => x.Category_id)</p>
     <p>Количество продукта: @Html.TextBoxFor(x => x.Amount)</p>
     <p>Цена: @Html.TextBoxFor(x => x.Price)</p>
-    <p>Скидка: @Html.TextBoxFor(x => x.Stock)</p>
+    <p>Скидка: @Html.TextBoxFor(x => x.Stock)</p><br />
     <input type="file" name="upload" /><br />
 
     <input type="submit" value="Добавить" />

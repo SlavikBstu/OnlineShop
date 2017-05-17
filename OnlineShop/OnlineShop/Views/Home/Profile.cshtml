@@ -1,11 +1,33 @@
-﻿@model OnlineShop.Models.Register
+﻿@model Domain.users
 
 @{
     ViewBag.Title = "View";
     Layout = "~/Views/Shared/_Master.cshtml";
 }
+<link rel="stylesheet" href="@Url.Content("~/context/css/register.css")" />
 
-<label id="name"> Name</label>
-<label id="surname"> Surname</label>
-<label id="country"> Country</label>
-<label id="city"> City</label>
+<div class="prof">
+    <h1>Ваш профиль</h1>
+        <img  src="@Url.Content(ViewBag.users.Avatar)" width="120" height="50"/>
+    <h2>@ViewBag.users.Name  @ViewBag.users.Surname</h2>
+       
+</div>
+
+<div class="basket">
+    <table>
+        <caption><h1>Моя корзина</h1></caption>
+        <tr>
+            <td><h2>Наименование товара</h2></td>
+            <td><h2>Вид</h2></td>
+            <td><h2>Действие</h2></td>
+        </tr>
+        @foreach(var p in ViewBag.products)
+        {
+            <tr>
+                <td><h3>@p.Title</h3></td>
+                <td><input type="image" id="view" src="@Url.Content(@p.Picture)" /></td>
+                <td><input type="image" id="buy" src="@Url.Content("~/context/img/buy.png")" /><input type="image" id="delete" src="@Url.Content("~/context/img/delete.png")" /></td>
+            </tr>
+        }
+    </table>
+</div>
