@@ -1,0 +1,11 @@
+F:\Курсовая работа\OnlineShop\Domain\bin\Release\Domain.dll.config
+F:\Курсовая работа\OnlineShop\Domain\bin\Release\Domain.dll
+F:\Курсовая работа\OnlineShop\Domain\bin\Release\Domain.pdb
+F:\Курсовая работа\OnlineShop\Domain\bin\Release\EntityFramework.dll
+F:\Курсовая работа\OnlineShop\Domain\bin\Release\EntityFramework.SqlServer.dll
+F:\Курсовая работа\OnlineShop\Domain\bin\Release\EntityFramework.xml
+F:\Курсовая работа\OnlineShop\Domain\bin\Release\EntityFramework.SqlServer.xml
+F:\Курсовая работа\OnlineShop\Domain\bin\Release\ru\EntityFramework.resources.dll
+F:\Курсовая работа\OnlineShop\Domain\obj\Release\Domain.csprojResolveAssemblyReference.cache
+F:\Курсовая работа\OnlineShop\Domain\obj\Release\Domain.dll
+F:\Курсовая работа\OnlineShop\Domain\obj\Release\Domain.pdb

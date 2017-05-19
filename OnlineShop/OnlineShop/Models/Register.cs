@@ -5,7 +5,7 @@ namespace OnlineShop.Models
 {
     public class Register
     {
-        public string Client_id { get; set; }
+        public string User_id { get; set; }
 
         [Required(ErrorMessage = "Введите свою фамилию")]
         public string Surname { get; set; }

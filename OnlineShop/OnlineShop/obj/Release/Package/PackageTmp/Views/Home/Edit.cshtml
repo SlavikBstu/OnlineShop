@@ -1,0 +1,32 @@
+﻿@model OnlineShop.Models.Product
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+<table>
+    <tr>
+        <td><p>Название игры </p></td>
+        <td><p>Категория </p></td>
+        <td><p>Количество продукта </p></td>
+        <td><p>Цена </p></td>
+        <td><p>Скидка </p></td>
+        <td><p>Файл </p></td>
+        <td></td>
+    </tr>
+    @foreach (var b in ViewBag.products)
+            {
+        <tr>
+            <td><p>@b.Title</p></td>
+            <td><p>@b.Category_id</p></td>
+            <td><p>@b.Amount</p></td>
+            <td><p>@b.Price</p></td>
+            <td><p>@b.Stock</p></td>
+            <td><p>@b.Picture</p></td>
+
+            <td><p><a href="/Home/ProductsEdit/@b.Product_id">Редактировать</a></p></td>
+            <td><p><a href="/Home/ProductsRemove/@b.Product_id">Удалить</a></p></td>
+        </tr>
+    }
+</table>

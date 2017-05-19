@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="OnlineShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="basket">
+    <Key>
+      <PropertyRef Name="Basket_id" />
+    </Key>
+    <Property Name="Basket_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Client_id" Type="Int32" Nullable="false" />
+    <Property Name="Product_id" Type="Int32" Nullable="false" />
+    <Property Name="Add_date" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="users" Relationship="Self.FK__basket__Client_i__11158940" FromRole="basket" ToRole="users" />
+    <NavigationProperty Name="products" Relationship="Self.FK__basket__Product___1209AD79" FromRole="basket" ToRole="products" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="Category_id" />
+    </Key>
+    <Property Name="Category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Category_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="products" Relationship="Self.FK__products__Catego__03BB8E22" FromRole="category" ToRole="products" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="Order_id" />
+    </Key>
+    <Property Name="Order_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Client_id" Type="Int32" Nullable="false" />
+    <Property Name="Product_id" Type="Int32" Nullable="false" />
+    <Property Name="Add_date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="users" Relationship="Self.FK__orders__Client_i__15DA3E5D" FromRole="orders" ToRole="users" />
+    <NavigationProperty Name="products" Relationship="Self.FK__orders__Product___16CE6296" FromRole="orders" ToRole="products" />
+  </EntityType>
+  <EntityType Name="product_info">
+    <Key>
+      <PropertyRef Name="Info_id" />
+    </Key>
+    <Property Name="Info_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product_id" Type="Int32" Nullable="false" />
+    <Property Name="Creator_company" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Release_date" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Annotation" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="products" Relationship="Self.FK__product_i__Produ__0880433F" FromRole="product_info" ToRole="products" />
+  </EntityType>
+  <EntityType Name="products">
+    <Key>
+      <PropertyRef Name="Product_id" />
+    </Key>
+    <Property Name="Product_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Category_id" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Picture" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Add_date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="basket" Relationship="Self.FK__basket__Product___1209AD79" FromRole="products" ToRole="basket" />
+    <NavigationProperty Name="category" Relationship="Self.FK__products__Catego__03BB8E22" FromRole="products" ToRole="category" />
+    <NavigationProperty Name="orders" Relationship="Self.FK__orders__Product___16CE6296" FromRole="products" ToRole="orders" />
+    <NavigationProperty Name="product_info" Relationship="Self.FK__product_i__Produ__0880433F" FromRole="products" ToRole="product_info" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="User_id" />
+    </Key>
+    <Property Name="User_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Birthday" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Sex" Type="String" MaxLength="1" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="80" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Avatar" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Register_date" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="basket" Relationship="Self.FK__basket__Client_i__11158940" FromRole="users" ToRole="basket" />
+    <NavigationProperty Name="orders" Relationship="Self.FK__orders__Client_i__15DA3E5D" FromRole="users" ToRole="orders" />
+  </EntityType>
+  <Association Name="FK__basket__Client_i__11158940">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="basket" Type="Self.basket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="basket">
+        <PropertyRef Name="Client_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__basket__Product___1209AD79">
+    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="basket" Type="Self.basket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="Product_id" />
+      </Principal>
+      <Dependent Role="basket">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__products__Catego__03BB8E22">
+    <End Role="category" Type="Self.category" Multiplicity="1" />
+    <End Role="products" Type="Self.products" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="Category_id" />
+      </Principal>
+      <Dependent Role="products">
+        <PropertyRef Name="Category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__Client_i__15DA3E5D">
+    <End Role="users" Type="Self.users" Multiplicity="1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="users">
+        <PropertyRef Name="User_id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="Client_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__orders__Product___16CE6296">
+    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="orders" Type="Self.orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="Product_id" />
+      </Principal>
+      <Dependent Role="orders">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__product_i__Produ__0880433F">
+    <End Role="products" Type="Self.products" Multiplicity="1" />
+    <End Role="product_info" Type="Self.product_info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="products">
+        <PropertyRef Name="Product_id" />
+      </Principal>
+      <Dependent Role="product_info">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="OnlineShopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="basket" EntityType="Self.basket" />
+    <EntitySet Name="category" EntityType="Self.category" />
+    <EntitySet Name="orders" EntityType="Self.orders" />
+    <EntitySet Name="product_info" EntityType="Self.product_info" />
+    <EntitySet Name="products" EntityType="Self.products" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="users" EntityType="Self.users" />
+    <AssociationSet Name="FK__basket__Client_i__11158940" Association="Self.FK__basket__Client_i__11158940">
+      <End Role="users" EntitySet="users" />
+      <End Role="basket" EntitySet="basket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__basket__Product___1209AD79" Association="Self.FK__basket__Product___1209AD79">
+      <End Role="products" EntitySet="products" />
+      <End Role="basket" EntitySet="basket" />
+    </AssociationSet>
+    <AssociationSet Name="FK__products__Catego__03BB8E22" Association="Self.FK__products__Catego__03BB8E22">
+      <End Role="category" EntitySet="category" />
+      <End Role="products" EntitySet="products" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__Client_i__15DA3E5D" Association="Self.FK__orders__Client_i__15DA3E5D">
+      <End Role="users" EntitySet="users" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__orders__Product___16CE6296" Association="Self.FK__orders__Product___16CE6296">
+      <End Role="products" EntitySet="products" />
+      <End Role="orders" EntitySet="orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__product_i__Produ__0880433F" Association="Self.FK__product_i__Produ__0880433F">
+      <End Role="products" EntitySet="products" />
+      <End Role="product_info" EntitySet="product_info" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

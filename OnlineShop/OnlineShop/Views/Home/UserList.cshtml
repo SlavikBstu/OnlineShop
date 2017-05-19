@@ -1,0 +1,36 @@
+﻿@model Domain.users
+
+@{
+    Layout = null;
+}
+
+<table>
+    <tr>
+        <td><p>Имя </p></td>
+        <td><p>Фамилия </p></td>
+        <td><p>Дата рождения </p></td>
+        <td><p>Пол </p></td>
+        <td><p>Электронная почта </p></td>
+        <td><p>Телефон </p></td>
+        <td><p>Адрес </p></td>
+        <td><p>Картинка профиля </p></td>
+        <td><p>Дата регистрации </p></td>
+        <td></td>
+    </tr>
+    @foreach (var b in ViewBag.users)
+            {
+        <tr>
+            <td><p>@b.Name</p></td>
+            <td><p>@b.Surname</p></td>
+            <td><p>@b.Birthday</p></td>
+            <td><p>@b.Sex</p></td>
+            <td><p>@b.Email</p></td>
+            <td><p>@b.Phone</p></td>
+            <td><p>@b.Address</p></td>
+            <td><p>@b.Avatar</p></td>
+            <td><p>@b.Register_date</p></td>
+            
+            <td><p><a href="/Home/UsersRemove/@b.User_id">Удалить</a></p></td>
+        </tr>
+    }
+</table>

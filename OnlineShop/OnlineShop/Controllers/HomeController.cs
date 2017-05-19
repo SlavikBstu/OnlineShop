@@ -7,6 +7,8 @@ using System.Net.Http;
 using OnlineShop.Models;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace OnlineShop.Controllers
 {
@@ -34,9 +36,9 @@ namespace OnlineShop.Controllers
                 Avatar = u.Avatar,
                 Register_date = u.Register_date
             });
-
+            
             return Json(us, JsonRequestBehavior.AllowGet);
-        }
+        }        
 
         public JsonResult
              GetProducts()
@@ -158,8 +160,27 @@ namespace OnlineShop.Controllers
         }*/
 
         [HttpGet]
+        public ActionResult UserList(users us)
+        {
+            IEnumerable<users> user = context.users;
+            ViewBag.users = user;
+            return View();
+        }
+
+        [HttpGet]
+        public RedirectResult UsersRemove(int id)
+        {
+            users temp = context.users.Find(id);
+            context.users.Remove(temp);
+            context.SaveChanges();
+            return Redirect("/Home/UserList");
+        }
+
+        [HttpGet]
         public ActionResult Products()
         {
+            IEnumerable<Domain.products> prod = context.products;
+            ViewBag.products = prod;
             return View();
         }
 
@@ -167,10 +188,14 @@ namespace OnlineShop.Controllers
         public ActionResult Products(HttpPostedFileBase upload, Product pr)
         {
             products p = new products();
-
+            //localhost.WebService1 soap = new localhost.WebService1();
+                        
             p.Title = pr.Title;
             p.Category_id = pr.Category_id;
+            int amount = Convert.ToInt32(pr.Amount);
+            //p.Amount = soap.Products(amount);
             p.Amount = pr.Amount;
+
             p.Price = pr.Price;
            
             if (upload != null)
@@ -187,23 +212,9 @@ namespace OnlineShop.Controllers
             {
                 context.products.Add(p);
                 context.SaveChanges();
-                return Redirect("Products");
+                return Redirect("/Home/Products");
             }
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult Edit()
-        {
-            IEnumerable<products> products = context.products;
-            ViewBag.products = products;
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Edit(Product p)
-        {
-            return View();
+            return Redirect("/Home/Products");
         }
 
         [HttpGet]
@@ -214,7 +225,7 @@ namespace OnlineShop.Controllers
 
             return View();
         }
-
+                
         [HttpPost]
         public RedirectResult ProductsEdit(products product_edit)
         {
@@ -232,13 +243,15 @@ namespace OnlineShop.Controllers
             products temp = context.products.Find(id);
             context.products.Remove(temp);
             context.SaveChanges();
-            return Redirect("/Home/Edit");
+            return Redirect("/Home/Products");
         }
-
-        
+                
         [HttpGet]
         public ActionResult Product()
         {
+            //localhost.SoapService soapservice = new localhost.SoapService();
+            //soapservice.GetProduct(id.ToString());
+
             IEnumerable<Domain.products> product = context.products;
             ViewBag.products = product;
             return View();

@@ -1,0 +1,22 @@
+﻿@model Domain.address
+
+@{
+    ViewBag.Title = "Address";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+<link rel="stylesheet" href="@Url.Content("~/context/css/register.css")" />
+
+@using (Html.BeginForm("Registered", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="reg">
+        <h2>Страна</h2>@Html.TextBoxFor(x => x.Country)<br />
+        <h2>Область</h2> @Html.TextBoxFor(x => x.Region)<br />
+        <h2>Город</h2> @Html.TextBoxFor(x => x.City)<br />
+        <h2>Улица</h2> @Html.TextBoxFor(x => x.Street)<br />
+        <h2>Номер дома</h2> @Html.TextBoxFor(x => x.Number_of_house)<br />
+        <h2>Номер квартиры</h2> @Html.TextBoxFor(x => x.Number_of_flat)<br />
+        <h2>Почтовый индекс</h2> @Html.TextBoxFor(x => x.Email_index)
+        <p class="submit"><input type="submit" value="Зарегистрироваться" /></p>
+    </div>
+}

@@ -12,10 +12,7 @@ namespace OnlineShop.Models
         public int Category_id { get; set; }
         public int Amount { get; set; }
         public int Price { get; set; }
-        public int Stock { get; set; }
         public string Picture { get; set; }
         public DateTime Add_date { get; set; }
-
-       
     }
 }

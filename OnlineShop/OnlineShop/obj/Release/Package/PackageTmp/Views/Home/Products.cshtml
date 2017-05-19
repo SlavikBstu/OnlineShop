@@ -1,0 +1,22 @@
+﻿@model OnlineShop.Models.Product
+
+@{
+    ViewBag.Title = "Products";
+ 
+}
+<link rel="stylesheet" href="@Url.Content("~/context/css/register.css")" />
+
+@using (Html.BeginForm("Products", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="reg">
+        <h2>Название игры </h2>@Html.TextBoxFor(x => x.Title)<br />
+        <h2>Категория </h2> @Html.TextBoxFor(x => x.Category_id)<br />
+        <h2>Количество продукта </h2> @Html.TextBoxFor(x => x.Amount)<br />
+        <h2>Цена </h2> @Html.TextBoxFor(x => x.Price)<br /><br /><br />
+        <input type="file" name="upload" /><br />
+
+        <p class="submit"><input type="submit" value="Добавить" /></p>
+    </div>
+
+}
+

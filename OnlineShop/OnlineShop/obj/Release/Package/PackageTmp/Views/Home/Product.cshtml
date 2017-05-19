@@ -1,0 +1,44 @@
+﻿@model Domain.products
+
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_Master.cshtml";
+}
+
+<link rel="stylesheet" href="@Url.Content("~/context/css/register.css")" />
+
+<div class="block" id="categories_block_left">
+    <h2 class="title_block">Categories</h2>
+    <div class="block_content">
+        <ul class="tree dynamized">
+            <li>
+                <a title="" href="#"><h3>Экшены/шутеры</h3></a>
+            </li>
+            <li>
+                <a title="" href="#"><h3>Стратегии</h3></a>
+
+            </li>
+            <li>
+                <a title="" href="#"><h3>Приключения</h3></a>
+            </li>
+            <li>
+                <a title="" href="#"><h3>Гонки</h3></a>
+            </li>
+            <li class="">
+                <a title="" href="#"><h3>Симуляторы</h3></a>
+            </li>
+        </ul>
+    </div>
+    
+</div>
+
+@foreach (var p in ViewBag.products)
+{
+    <div class="product-index">
+        <h2><a href="#">@p.Title</a></h2>
+        <a href="#"><img src="@Url.Content(@p.Picture)" width="120" height="50" alt="" /></a>
+        <p>Цена:  <span>@p.Price</span></p>
+        <a href="#"><img class="addtocard-index" src="@Url.Content("~/context/img/addcard-index.png")" alt="Добавить в корзину" /></a>
+    </div>
+    <hr />
+}
